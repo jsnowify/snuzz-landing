@@ -78,4 +78,4 @@ _Davao del Sur State College — BS Information Technology_
 
 ## 📄 License
 
-This project was built for educational and research purposes. © 2026 Android Sound Intelligence · Philippines.
+This project was built for educational and research purposes. © 2026 Snowi · Philippines.

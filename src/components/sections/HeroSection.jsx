@@ -1,4 +1,4 @@
-import { LeafA, LeafB, BranchLeft, SprigRight } from "../icons/BotanicalIcons";
+import { LeafA, BranchLeft, SprigRight } from "../icons/BotanicalIcons";
 
 const HeroSection = ({ onDownload }) => (
   <section
@@ -9,6 +9,7 @@ const HeroSection = ({ onDownload }) => (
       overflow: "hidden",
     }}
   >
+    {/* Botanical decorations */}
     <LeafA
       style={{
         top: -30,
@@ -40,6 +41,7 @@ const HeroSection = ({ onDownload }) => (
     />
 
     <div style={{ position: "relative", zIndex: 2 }}>
+      {/* Eyebrow — live pulse dot instead of leaf icon */}
       <div
         style={{
           display: "flex",
@@ -48,19 +50,44 @@ const HeroSection = ({ onDownload }) => (
           marginBottom: 34,
         }}
       >
-        <LeafB style={{ width: 16, height: 22, color: "#5C7A5F" }} />
+        <div
+          style={{
+            width: 6,
+            height: 6,
+            background: "#C4622D",
+            borderRadius: "50%",
+            animation: "heroDotPulse 2s ease-in-out infinite",
+            flexShrink: 0,
+          }}
+        />
         <span
           style={{
-            fontSize: 11,
+            fontSize: 10,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "#5C7A5F",
           }}
         >
-          Capstone Project · DSSC
+          Capstone Project · DSSC · BSIT
         </span>
       </div>
 
+      <style>{`
+        @keyframes heroDotPulse {
+          0%, 100% { opacity: 0.45; transform: scale(1);   }
+          50%       { opacity: 1;    transform: scale(1.4); }
+        }
+        @keyframes pulseRing {
+          0%   { transform: scale(0.8); opacity: 0.6; }
+          100% { transform: scale(2.2); opacity: 0;   }
+        }
+        @keyframes pulseBar {
+          0%, 100% { transform: scaleY(1);   opacity: 0.5; }
+          50%       { transform: scaleY(2.6); opacity: 1;   }
+        }
+      `}</style>
+
+      {/* Headline */}
       <h1
         className="serif"
         style={{
@@ -89,12 +116,13 @@ const HeroSection = ({ onDownload }) => (
         </span>
       </h1>
 
+      {/* Body */}
       <p
         className="hero-body"
         style={{
           fontSize: 15,
           lineHeight: 1.85,
-          color: "rgba(26,39,24,0.6)",
+          color: "rgba(26,39,24,0.58)",
           maxWidth: 460,
           marginBottom: 38,
           fontWeight: 300,
@@ -102,10 +130,12 @@ const HeroSection = ({ onDownload }) => (
       >
         Developed by <strong>Joshua L. Cambronero</strong> and{" "}
         <strong>Jessa Mae H. Rubino</strong>. Snuzz uses edge AI to process
-        audio strictly on your device for total privacy, while securely syncing
-        your activity thresholds using <strong>Google Auth & Firebase</strong>.
+        audio strictly on your device for total privacy, syncing your activity
+        thresholds securely via <strong>Google Auth &amp; Firebase</strong>.{" "}
+        <span style={{ color: "#5C7A5F" }}>Version 1.0 now available.</span>
       </p>
 
+      {/* CTAs */}
       <div
         className="hero-cta-row"
         style={{
@@ -133,6 +163,7 @@ const HeroSection = ({ onDownload }) => (
         </a>
       </div>
 
+      {/* Stats */}
       <div
         className="stats-grid"
         style={{
@@ -154,12 +185,13 @@ const HeroSection = ({ onDownload }) => (
               flex: 1,
               borderRight: i < 3 ? "1px solid rgba(26,39,24,0.1)" : "none",
               paddingLeft: i > 0 ? 12 : 0,
+              paddingRight: i < 3 ? 12 : 0,
             }}
           >
             <div
               className="serif"
               style={{
-                fontSize: "clamp(18px, 2vw, 22px)",
+                fontSize: "clamp(16px, 2vw, 22px)",
                 fontWeight: 900,
                 lineHeight: 1,
                 letterSpacing: "-0.03em",
@@ -183,6 +215,7 @@ const HeroSection = ({ onDownload }) => (
       </div>
     </div>
 
+    {/* Phone mockup */}
     <div
       className="hero-phone"
       style={{
@@ -205,7 +238,7 @@ const HeroSection = ({ onDownload }) => (
           <div className="pixel-9-screen" style={{ position: "relative" }}>
             <div className="pixel-9-notch" />
 
-            {/* The Actual Screenshot */}
+            {/* Screenshot */}
             <div
               style={{
                 position: "absolute",
@@ -227,7 +260,7 @@ const HeroSection = ({ onDownload }) => (
               />
             </div>
 
-            {/* Overlay: Pulse Audio Waveform */}
+            {/* Audio pulse overlay */}
             <div
               style={{
                 position: "absolute",
@@ -239,16 +272,15 @@ const HeroSection = ({ onDownload }) => (
                 zIndex: 10,
               }}
             >
-              {/* Outer Pulse Rings */}
               <div
                 style={{
                   position: "absolute",
                   width: 140,
                   height: 140,
                   borderRadius: "50%",
-                  border: "2px solid rgba(196, 98, 45, 0.4)", // Rust color
+                  border: "2px solid rgba(196,98,45,0.4)",
                   animation:
-                    "pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite",
+                    "pulseRing 2s cubic-bezier(0.215,0.61,0.355,1) infinite",
                 }}
               />
               <div
@@ -257,35 +289,30 @@ const HeroSection = ({ onDownload }) => (
                   width: 140,
                   height: 140,
                   borderRadius: "50%",
-                  border: "2px solid rgba(92, 122, 95, 0.3)", // Sage color
+                  border: "2px solid rgba(92,122,95,0.3)",
                   animation:
-                    "pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite 0.6s",
+                    "pulseRing 2s cubic-bezier(0.215,0.61,0.355,1) infinite 0.6s",
                 }}
               />
 
-              {/* Inner Dynamic Bars (Circular layout) */}
               <div style={{ position: "relative", width: 60, height: 60 }}>
-                {Array.from({ length: 12 }).map((_, i) => {
-                  const angle = (i * 360) / 12;
-                  const delay = i * 0.1;
-                  return (
-                    <div
-                      key={i}
-                      style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        width: 4,
-                        height: 12,
-                        background: "#C4622D",
-                        borderRadius: 2,
-                        transformOrigin: "0 0",
-                        transform: `rotate(${angle}deg) translate(-2px, 15px)`,
-                        animation: `pulseBar 1.2s ease-in-out infinite ${delay}s`,
-                      }}
-                    />
-                  );
-                })}
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      width: 4,
+                      height: 12,
+                      background: "#C4622D",
+                      borderRadius: 2,
+                      transformOrigin: "0 0",
+                      transform: `rotate(${(i * 360) / 12}deg) translate(-2px, 15px)`,
+                      animation: `pulseBar 1.2s ease-in-out infinite ${i * 0.1}s`,
+                    }}
+                  />
+                ))}
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 const CustomCursor = () => {
   const [pos, setPos] = useState({ x: -100, y: -100 });
@@ -8,12 +8,14 @@ const CustomCursor = () => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const move = (e) => setPos({ x: e.clientX, y: e.clientY });
+
     const handleMouseOver = (e) => {
+      const el = e.target;
       if (
-        e.target.tagName.toLowerCase() === "a" ||
-        e.target.tagName.toLowerCase() === "button" ||
-        e.target.closest("button") ||
-        e.target.closest("a")
+        el.tagName.toLowerCase() === "a" ||
+        el.tagName.toLowerCase() === "button" ||
+        el.closest("button") ||
+        el.closest("a")
       ) {
         setIsHovering(true);
       } else {
@@ -23,7 +25,6 @@ const CustomCursor = () => {
 
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseover", handleMouseOver);
-
     return () => {
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mouseover", handleMouseOver);

@@ -17,6 +17,8 @@ const FeaturesSection = () => (
         transform: "scaleX(-1) rotate(-10deg)",
       }}
     />
+
+    {/* Section header */}
     <div
       className="header-grid"
       style={{
@@ -27,7 +29,7 @@ const FeaturesSection = () => (
     >
       <div
         style={{
-          fontSize: 11,
+          fontSize: 10,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
           color: "#5C7A5F",
@@ -53,20 +55,23 @@ const FeaturesSection = () => (
         </span>
       </h2>
     </div>
+
+    {/* Feature rows */}
     <div>
       {FEATURES.map((f, i) => (
         <div key={i} className="feat-row">
           <div
             className="fn mono"
             style={{
-              fontSize: 12,
-              color: "rgba(26,39,24,0.4)",
+              fontSize: 11,
+              color: "rgba(26,39,24,0.35)",
               letterSpacing: "0.08em",
               paddingTop: 3,
             }}
           >
             {f.num}
           </div>
+
           <div
             className="hide-on-mobile"
             style={{
@@ -75,6 +80,7 @@ const FeaturesSection = () => (
               alignSelf: "stretch",
             }}
           />
+
           <div>
             <div
               className="serif"
@@ -99,10 +105,11 @@ const FeaturesSection = () => (
               {f.body}
             </div>
           </div>
+
           <div style={{ paddingTop: 4 }}>
             <div
               style={{
-                width: 24,
+                width: 20,
                 height: 1.5,
                 background: "#5C7A5F",
                 marginBottom: 6,
@@ -110,7 +117,7 @@ const FeaturesSection = () => (
             />
             <div
               style={{
-                fontSize: 10,
+                fontSize: 9,
                 color: "#5C7A5F",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",

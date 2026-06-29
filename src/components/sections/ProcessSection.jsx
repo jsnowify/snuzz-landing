@@ -1,5 +1,23 @@
 import { LeafA } from "../icons/BotanicalIcons";
 
+const STEPS = [
+  {
+    n: "I",
+    title: "Authenticate & Calibrate",
+    body: "Sign in with Google and grant mic access. Run the 30-second ambient scan. Snuzz builds your noise floor profile automatically.",
+  },
+  {
+    n: "II",
+    title: "Set Your Triggers",
+    body: "Choose sound classes and confidence thresholds that matter. Your custom profiles are securely backed up and synced via Firebase.",
+  },
+  {
+    n: "III",
+    title: "Forget It's There",
+    body: "It runs silently. The moment a sound hits threshold, you get a haptic burst and an instant lock-screen alert. Every time.",
+  },
+];
+
 const ProcessSection = () => (
   <section
     id="how-it-works"
@@ -27,6 +45,7 @@ const ProcessSection = () => (
       className="section-container"
       style={{ position: "relative", zIndex: 2 }}
     >
+      {/* Header */}
       <div
         className="header-grid"
         style={{
@@ -37,7 +56,7 @@ const ProcessSection = () => (
       >
         <div
           style={{
-            fontSize: 11,
+            fontSize: 10,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: "rgba(143,175,130,0.6)",
@@ -64,24 +83,9 @@ const ProcessSection = () => (
         </h2>
       </div>
 
+      {/* Steps */}
       <div className="process-grid">
-        {[
-          {
-            n: "I",
-            title: "Authenticate & Calibrate",
-            body: "Sign in with Google and grant mic access. Run the 30-second ambient scan. Snuzz builds your noise floor profile automatically.",
-          },
-          {
-            n: "II",
-            title: "Set Your Triggers",
-            body: "Choose sound classes and confidence thresholds that matter. Your custom profiles are securely backed up and synced via Firebase.",
-          },
-          {
-            n: "III",
-            title: "Forget It's There",
-            body: "It runs silently. The moment a sound hits threshold, you get a haptic burst and an instant lock-screen alert. Every time.",
-          },
-        ].map((s, i) => (
+        {STEPS.map((s, i) => (
           <div
             key={i}
             className="how-item"

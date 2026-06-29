@@ -6,7 +6,10 @@ const ScreenshotSection = () => {
   const [activeScreen, setActiveScreen] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setActiveScreen((p) => (p + 1) % 3), 4000);
+    const t = setInterval(
+      () => setActiveScreen((p) => (p + 1) % SCREENS.length),
+      4000,
+    );
     return () => clearInterval(t);
   }, []);
 
@@ -37,6 +40,7 @@ const ScreenshotSection = () => {
       />
 
       <div style={{ position: "relative", zIndex: 2 }}>
+        {/* Section header */}
         <div
           className="header-grid"
           style={{
@@ -47,7 +51,7 @@ const ScreenshotSection = () => {
         >
           <div
             style={{
-              fontSize: 11,
+              fontSize: 10,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: "#5C7A5F",
@@ -90,6 +94,7 @@ const ScreenshotSection = () => {
         </div>
 
         <div className="screenshot-grid">
+          {/* Phone frame */}
           <div
             className="screen-item"
             style={{
@@ -189,6 +194,8 @@ const ScreenshotSection = () => {
                 </div>
               </div>
             </div>
+
+            {/* Screen label pill */}
             <div
               style={{
                 position: "absolute",
@@ -199,18 +206,21 @@ const ScreenshotSection = () => {
                 color: "#F4EFE4",
                 padding: "6px 20px",
                 borderRadius: 100,
-                fontSize: 11,
+                fontSize: 10,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 whiteSpace: "nowrap",
                 zIndex: 10,
+                transition: "background 0.3s",
               }}
             >
               {SCREENS[activeScreen].label}
             </div>
           </div>
 
+          {/* Copy panel */}
           <div className="screen-item" style={{ paddingTop: "24px" }}>
+            {/* Dot indicators */}
             <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
               {SCREENS.map((_, i) => (
                 <button
@@ -231,6 +241,7 @@ const ScreenshotSection = () => {
               ))}
             </div>
 
+            {/* Sublabel */}
             <div
               style={{
                 display: "flex",
@@ -244,14 +255,16 @@ const ScreenshotSection = () => {
                   width: 20,
                   height: 1.5,
                   background: SCREENS[activeScreen].accent,
+                  transition: "background 0.3s",
                 }}
               />
               <span
                 style={{
-                  fontSize: 11,
+                  fontSize: 10,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: SCREENS[activeScreen].accent,
+                  transition: "color 0.3s",
                 }}
               >
                 {SCREENS[activeScreen].sublabel}
@@ -284,16 +297,21 @@ const ScreenshotSection = () => {
               {SCREENS[activeScreen].desc}
             </p>
 
+            {/* Prev / Next */}
             <div style={{ display: "flex", gap: 10 }}>
               <button
-                onClick={() => setActiveScreen((p) => (p + 2) % 3)}
+                onClick={() =>
+                  setActiveScreen(
+                    (p) => (p + SCREENS.length - 1) % SCREENS.length,
+                  )
+                }
                 className="ghost-btn"
                 style={{ fontSize: 12, padding: "10px 20px" }}
               >
                 ← Prev
               </button>
               <button
-                onClick={() => setActiveScreen((p) => (p + 1) % 3)}
+                onClick={() => setActiveScreen((p) => (p + 1) % SCREENS.length)}
                 className="ghost-btn"
                 style={{ fontSize: 12, padding: "10px 20px" }}
               >
